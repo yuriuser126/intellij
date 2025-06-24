@@ -5,6 +5,7 @@
 ![Java](https://img.shields.io/badge/Java-17-orange)
 ![Spring Boot](https://img.shields.io/badge/SpringBoot-2.7-green)
 ![MariaDB](https://img.shields.io/badge/MariaDB-10.6-blue)
+![License](https://img.shields.io/badge/license-MIT-blue)
 
 인텔리제이 실습 프로젝트
 
@@ -20,6 +21,12 @@
 
 ---
 
+## 라이선스
+
+이 프로젝트는 [MIT 라이선스](./LICENSE) 하에 배포됩니다.
+
+---
+
 ## 프로젝트 단계별 문서 (노션)
 
 각 단계별 상세 개발 내용과 구현 방법은 아래 노션 문서를 참고해 주세요:
@@ -31,3 +38,7 @@
 - [5단계: 추가 개선 작업 및 배포 테스트](https://iridescent-breakfast-50b.notion.site/2025-06-24-21b75f0fde6c805592e2ea345fa591c3?source=copy_link)  
 
 ---
+
+**문의 및 연락처**  
+✉️ syuri5458@naver.com 
+🌐 [포트폴리오 링크](https://yourportfolio.com)
