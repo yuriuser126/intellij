@@ -13,9 +13,9 @@
 
 ## 배포 안내
 
-- 백엔드: Render에 Spring Boot와 MariaDB Docker 컨테이너로 배포  
-- 프론트엔드: 별도 GitHub Pages 또는 Render로 배포  
-- 주요 환경 변수 및 Docker 설정 적용 완료  
+- 백엔드: CloudType에 Spring Boot와 MariaDB 배포  
+- 프론트엔드: 별도 GitHub Pages 또는 springboot  배포  
+
 
 배포 URL: [https://your-service-url.com](https://your-service-url.com)
 
