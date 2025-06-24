@@ -13,9 +13,10 @@
 
 ## 배포 안내
 
-- 백엔드: CloudType에 Spring Boot와 MariaDB 배포  
-- 프론트엔드: 별도 GitHub Pages 또는 springboot  배포  
+	•	백엔드: CloudType에 Spring Boot(포트 8989)와 MariaDB를 배포
+	•	프론트엔드: GitHub Pages로 정적 배포하거나, Spring Boot 내 정적 리소스로 통합 배포
 
+-
 
 배포 URL: [https://your-service-url.com](https://your-service-url.com)
 
@@ -24,6 +25,35 @@
 ## 라이선스
 
 이 프로젝트는 [MIT 라이선스](./LICENSE) 하에 배포됩니다.
+
+---
+
+📌 요약 키워드
+	•	프레임워크: Spring Boot
+	•	템플릿 엔진: Thymeleaf
+	•	개발 도구: IntelliJ IDEA
+	•	배포 플랫폼: CloudType
+	•	포트: 8989
+	•	아키텍처: 통합 배포, 서버사이드 렌더링(SSR), MariaDB 연동
+
+
+---
+
+구조
+┌────────────────────────────────────┐
+│ CloudType - Spring Boot (포트 8989) │
+│                                    │
+│  /templates → Thymeleaf 템플릿 (HTML)   │ ← 프론트엔드 (SSR)
+│  /static    → JS, CSS, 이미지          │
+│  @Controller → Model 전달 및 렌더링    │ ← 백엔드 로직
+│                                    │
+└────────────┬─────────────────────┘
+│ DB 연결 (JDBC)
+▼
+┌──────────────────────────────┐
+│     CloudType - MariaDB       │
+└──────────────────────────────┘
+
 
 ---
 
