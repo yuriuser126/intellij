@@ -1,11 +1,33 @@
 # intellij
+
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
+![Deploy Status](https://img.shields.io/badge/deploy-success-blue)
+![Java](https://img.shields.io/badge/Java-17-orange)
+![Spring Boot](https://img.shields.io/badge/SpringBoot-2.7-green)
+![MariaDB](https://img.shields.io/badge/MariaDB-10.6-blue)
+
+인텔리제이 실습 프로젝트
+
 ---
-인텔리제이 실습 연결
 
-<br>
+## 배포 안내
 
-Thymleaf 연동 - 게시판
-<br>
--페이징
-<br>
--게시판 글 등록 수정 삭제
+- 백엔드: Render에 Spring Boot와 MariaDB Docker 컨테이너로 배포  
+- 프론트엔드: 별도 GitHub Pages 또는 Render로 배포  
+- 주요 환경 변수 및 Docker 설정 적용 완료  
+
+배포 URL: [https://your-service-url.com](https://your-service-url.com)
+
+---
+
+## 프로젝트 단계별 문서 (노션)
+
+각 단계별 상세 개발 내용과 구현 방법은 아래 노션 문서를 참고해 주세요:
+
+- [1단계: 개발 환경 구축 및 MariaDB 설치](https://iridescent-breakfast-50b.notion.site/2025-06-18-21675f0fde6c80768360cc0422164162?source=copy_link)  
+- [2단계: JPA 연동 및 Thymeleaf 적용](https://iridescent-breakfast-50b.notion.site/2025-06-19-21775f0fde6c80e298a7dc4070bcb8e3?source=copy_link)  
+- [3단계: 게시판 CRUD 및 검색 기능 구현](https://iridescent-breakfast-50b.notion.site/2025-06-20-21875f0fde6c807aa61fcc540e768fd1?source=copy_link)  
+- [4단계: 유효성 검사, 페이징 처리 및 Cloudtype 배포](https://iridescent-breakfast-50b.notion.site/2025-06-23-21b75f0fde6c80b88fe1dc9327527fbb?source=copy_link)  
+- [5단계: 추가 개선 작업 및 배포 테스트](https://iridescent-breakfast-50b.notion.site/2025-06-24-21b75f0fde6c805592e2ea345fa591c3?source=copy_link)  
+
+---
