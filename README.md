@@ -17,7 +17,17 @@
 -	프론트엔드: GitHub Pages로 정적 배포하거나, Spring Boot 내 정적 리소스로 통합 배포
 
 
-배포 URL: [https://your-service-url.com](https://your-service-url.com)
+배포 URL: [https://port-0-intellij-mc9wb5q9f4801ee0.sel5.cloudtype.app/](https://port-0-intellij-mc9wb5q9f4801ee0.sel5.cloudtype.app/)
+
+---
+
+
+
+## 배포 및 빌드 관련 참고 사항
+
+- 도커파일이 프로젝트 메인 루트에 위치해야 하며, 이로 인해 초기 빌드 지연이 발생했습니다.  
+- `.dockerignore` 파일을 추가해 빌드 시 불필요한 파일을 제외하여 최적화를 진행했습니다.  
+- 배포 과정에서는 서버 재시작 및 이미지 재빌드가 반드시 필요합니다.
 
 ---
 
