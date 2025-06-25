@@ -13,10 +13,9 @@
 
 ## 배포 안내
 
-	•	백엔드: CloudType에 Spring Boot(포트 8989)와 MariaDB를 배포
-	•	프론트엔드: GitHub Pages로 정적 배포하거나, Spring Boot 내 정적 리소스로 통합 배포
+-	백엔드: CloudType에 Spring Boot(포트 8989)와 MariaDB를 배포
+-	프론트엔드: GitHub Pages로 정적 배포하거나, Spring Boot 내 정적 리소스로 통합 배포
 
--
 
 배포 URL: [https://your-service-url.com](https://your-service-url.com)
 
@@ -39,20 +38,19 @@
 
 ---
 
-구조
-┌────────────────────────────────────┐
-│ CloudType - Spring Boot (포트 8989) │
-│                                    │
-│  /templates → Thymeleaf 템플릿 (HTML)   │ ← 프론트엔드 (SSR)
-│  /static    → JS, CSS, 이미지          │
-│  @Controller → Model 전달 및 렌더링    │ ← 백엔드 로직
-│                                    │
-└────────────┬─────────────────────┘
-│ DB 연결 (JDBC)
-▼
-┌──────────────────────────────┐
-│     CloudType - MariaDB       │
-└──────────────────────────────┘
+┌─────────────────────────────────────────────┐
+│          ☁️ CloudType - Spring Boot         │ (포트 8989)
+│─────────────────────────────────────────────│
+│  📁 /templates  →  Thymeleaf 템플릿 (HTML)   │ ← 프론트엔드 (SSR)
+│  📁 /static     →  JS, CSS, 이미지 파일      │
+│                                                 
+│  🎯 @Controller → Model 전달 및 렌더링       │ ← 백엔드 로직
+└────────────────────────┬────────────────────┘
+                         │  🔗 DB 연결 (JDBC)
+                         ▼
+         ┌──────────────────────────────┐
+         │   🛢️ CloudType - MariaDB      │
+         └──────────────────────────────┘
 
 
 ---
