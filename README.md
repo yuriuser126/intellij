@@ -80,4 +80,4 @@
 
 **문의 및 연락처**  
 ✉️ syuri5458@naver.com 
-🌐 [포트폴리오 링크](https://yourportfolio.com)
+🌐 [포트폴리오 링크](https://yuriportfolio.com)
