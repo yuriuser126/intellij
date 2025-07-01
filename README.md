@@ -20,6 +20,13 @@
 배포 URL: [https://port-0-intellij-mc9wb5q9f4801ee0.sel5.cloudtype.app/](https://port-0-intellij-mc9wb5q9f4801ee0.sel5.cloudtype.app/)
 
 ---
+## 현재 진행 상황
+
+- Spring Security를 활용한 로그인 기능 UI 구현 완료 (로그인 화면 적용)
+- 보안 설정 및 인증 처리 기능 추가 작업 진행 중
+- 회원가입, 권한 관리 등 보안 기능 추가 예정
+
+---
 
 
 
@@ -75,6 +82,27 @@
 - [3단계: 게시판 CRUD 및 검색 기능 구현](https://iridescent-breakfast-50b.notion.site/2025-06-20-21875f0fde6c807aa61fcc540e768fd1?source=copy_link)  
 - [4단계: 유효성 검사, 페이징 처리 및 Cloudtype 배포](https://iridescent-breakfast-50b.notion.site/2025-06-23-21b75f0fde6c80b88fe1dc9327527fbb?source=copy_link)  
 - [5단계: 추가 개선 작업 및 배포 테스트](https://iridescent-breakfast-50b.notion.site/2025-06-24-21b75f0fde6c805592e2ea345fa591c3?source=copy_link)  
+
+---
+
+## 보안 기능 개발 문서 (노션)
+
+- [Spring Security 적용 및 로그인 화면 구현](https://iridescent-breakfast-50b.notion.site/2025-06-29-22275f0fde6c801ea5d3fc0f9ad06baf?source=copy_link)  
+- (추후 회원가입, 권한 관리, 세션/토큰 관리 등 추가 예정)
+
+---
+
+## 주요 변경 사항
+
+- `WebSecurityConfig.java` 추가하여 Spring Security 기본 설정 적용
+- 로그인 페이지 커스터마이징 및 Thymeleaf 연동 완료
+- 기존 게시판 CRUD에 인증 및 권한 체크 기능 연동 예정
+
+---
+## 버전 관리 및 브랜치 전략
+
+- `main` 브랜치는 안정된 배포용 코드 유지
+- 기능별 주요 변경 시점에 태그(tag)를 생성하여 버전 관리 중
 
 ---
 
