@@ -1,13 +1,22 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" >
 
-<head th:replace="~{fragments/common :: head}">
+<!-- <head th:replace="~{'fragment/common' :: head}"> -->
+<head th:replace="~{fragment/common :: head}">
 </head>
 
 <body>
-    <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4" th:replace="~{fragments/common :: menu}"> -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4" th:replace="~{fragments/common :: menu('home')}">
-    </nav>
+      <!-- home, index 안에서의 메뉴로 쓸거 -> home -->
+
+   <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4" th:replace="~{'fragment/common' :: menu}"> -->
+   <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4" th:replace="~{'fragment/common' :: menu('home')}">
+   </nav>
+
+    <!-- <div th:replace="~{fragment/common :: menu}"></div> -->
+     
+    
 </body>
 
 </html>
+
+
