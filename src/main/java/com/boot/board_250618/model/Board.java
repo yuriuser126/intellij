@@ -1,9 +1,6 @@
 package com.boot.board_250618.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -22,4 +19,12 @@ public class Board {
     @Size (min=2, max=30 ,message ="제목은 2자이상 50자 이하여야합니다.")
     private String title;
     private String content;
+
+//    many to one 게시판 to 사용자 걸거임 +참조변수로 만들어버림
+
+    @ManyToOne
+    @JoinColumn (name="user_id")
+    private User user;
+
+
 }

@@ -47,7 +47,8 @@
                 <td>
                     <a th:text="${board.title}" th:href="@{/board/form(id=${board.id})}">글제목</a>
                 </td>
-                <td th:text="${board.content}">홍길동</td>
+                <td th:text="${board.user.username}">홍길동</td>
+                <!-- <td th:text="${board.content}">홍길동</td> -->
                 <!-- <td th:text="${board.title}">Otto</td> -->
             </tr>
 
@@ -56,6 +57,7 @@
 
     <p class="text-end">
         <a class="btn btn-primary" th:href="@{form}">쓰기</a>
+        <!-- <a class="btn btn-primary" th:href="@{form}">쓰기</a> -->
         <!--        <button type="button" class="btn btn-primary" th:href="@{board/form}" >쓰기</button>-->
     </p>
 

@@ -2,6 +2,7 @@ package com.boot.board_250618.controller;
 
 import com.boot.board_250618.model.Board;
 import com.boot.board_250618.repository.BoardRepository;
+import com.boot.board_250618.service.BoardService;
 import com.boot.board_250618.validator.BoardValidator;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,6 +29,9 @@ public class BoardController {
 
     @Autowired
     private BoardValidator boardValidator;
+
+    @Autowired
+    private BoardService boardService;
 
 
     @GetMapping("/list")
@@ -70,6 +76,7 @@ public class BoardController {
         }
 //        필드 담으려고 객체생성해놓음
         return "board/form";
+//        return "board/list";
 //        보드에있는리스트 찾아감 + //디버깅을해서 board에 값 뭐들고오는지 확인하느거임
     }
 
@@ -86,7 +93,16 @@ public class BoardController {
             return "board/form";
         }
 
-        boardRepository.save(board);
+//        authentication : 스프링 시큐리티의 인증정보임
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+
+//        세이브 메서드에 유저네임이랑 볻드가져옴 보드는 여기서 유저네임은 서비스에서
+        boardService.save(username,board);
+
+
+
+//        boardRepository.save(board);
 
         return "redirect:/board/list";//redirect걸어줘야함.
     }

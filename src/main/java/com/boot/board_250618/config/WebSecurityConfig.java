@@ -21,11 +21,14 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/", "/css/**", "/images/**").permitAll()
+                        .requestMatchers("/", "/css/**", "/images/**","/account/register").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
                         .loginPage("/account/login")
+                        .loginProcessingUrl("/account/login")
+                        .defaultSuccessUrl("/")
+                        .failureUrl("/account/login?error")
                         .permitAll()
 
                 )
