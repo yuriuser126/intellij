@@ -88,7 +88,13 @@
 ## 보안 기능 개발 문서 (노션)
 
 - [Spring Security 적용 및 로그인 화면 구현](https://iridescent-breakfast-50b.notion.site/2025-06-29-22275f0fde6c801ea5d3fc0f9ad06baf?source=copy_link)  
-- (추후 회원가입, 권한 관리, 세션/토큰 관리 등 추가 예정)
+- (추후 회원가입, 권한 관리 등 추가 예정)
+
+- [시큐리티 적용 완료 + 크롬측 오류 있음](https://iridescent-breakfast-50b.notion.site/2025-07-02-22275f0fde6c801ea5d3fc0f9ad06baf?source=copy_link)
+
+> - Spring Security 적용 및 로그인 화면 구현 완료  
+> - 크롬 개발자도구에서 발생하는 경고성 오류 존재 (실행에는 영향 없음, 추후 개선 예정)  
+> - 작업 내용은 별도 브랜치에서 진행 후 메인 브랜치로 병합 예정
 
 ---
 
@@ -101,10 +107,16 @@
 ---
 ## 버전 관리 및 브랜치 전략
 
-- `main` 브랜치는 안정된 배포용 코드 유지
-- 기능별 주요 변경 시점에 태그(tag)를 생성하여 버전 관리 중
+- `main` 브랜치는 안정된 배포용 코드 유지  
+- 기능 개발 및 수정 작업은 별도 기능 브랜치(feature branch)에서 진행  
+- 작업 완료 후 Pull Request를 통해 `main` 브랜치에 병합  
+- 주요 변경 시점에 태그(tag)를 생성하여 버전 관리 중  
 
----
+  
+- `feature/security-login` 브랜치에서 Spring Security 적용 작업 진행 중  
+- 시큐리티 적용 완료 및 크롬 개발자도구 경고성 오류 존재 (실행에는 영향 없음, 추후 개선 예정)  
+- 작업 완료 후 메인 브랜치로 병합 예정
+
 
 **문의 및 연락처**  
 ✉️ syuri5458@naver.com 
