@@ -97,14 +97,36 @@
 > - 작업 내용은 별도 브랜치에서 진행 후 메인 브랜치로 병합 예정
 
 - [mybatis 연동 진행중](https://iridescent-breakfast-50b.notion.site/2025-07-03-22575f0fde6c80808d08ea1519694ce6?source=copy_link)
+- [mybatis 연동완료 + Oauth2 구글, 네이버 완료 + 관리자 구분 및 로그 시각화](https://iridescent-breakfast-50b.notion.site/2025-07-03-22675f0fde6c800d8ee9ec7f2469d812?source=copy_link)
 
 ---
 
 ## 주요 변경 사항
 
-- `WebSecurityConfig.java` 추가하여 Spring Security 기본 설정 적용
+- `WebSecurityConfig.java` 추가하여 Spring Security 기본 설정 적용 완료
 - 로그인 페이지 커스터마이징 및 Thymeleaf 연동 완료
 - 기존 게시판 CRUD에 인증 및 권한 체크 기능 연동 예정
+- GitHub push secret 차단 문제 대응  
+- BFG 도구로 민감정보(application.properties) 커밋 기록 제거 시도  
+- 새 폴더에서 클린 복제 후 정상 푸시 성공  
+- 기존 저장소 내 중첩 git 저장소 문제 해결  
+- 앞으로 커밋 시 민감 정보 관리 주의 필요
+
+
+## Git Push Secret 차단 문제 정리
+<details>
+<summary>Git push</summary>
+
+- GitHub이 OAuth Client ID 및 Secret이 포함된 커밋을 탐지하여 푸시 거부  
+- 기존 커밋에서 민감정보 제거 위해 BFG repo cleaner 사용  
+- BFG 사용 후 `git reflog expire` 및 `git gc` 실행하여 로컬 히스토리 정리  
+- 강제 푸시(`git push --force`) 시도하였으나 일부 참조(리모트 PR 관련)가 거부됨  
+- 해결책: 새 폴더에 클린 복제본을 받아 작업 후 민감정보 없는 상태로 강제 푸시 완료  
+- 주의사항: 민감정보는 `.gitignore`에 추가하고 커밋 전에 제거 필요  
+- 참고 링크:  
+  https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push
+
+</details>
 
 ---
 ## 버전 관리 및 브랜치 전략
@@ -121,5 +143,5 @@
 
 
 **문의 및 연락처**  
-✉️ syuri5458@naver.com 
+✉️ syuri5458@naver.com <br>
 🌐 [포트폴리오 링크](https://yuriportfolio.com)
