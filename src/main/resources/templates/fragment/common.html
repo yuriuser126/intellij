@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<!--타임리프 주소-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+
+
+
+<head th:fragment="head">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <!--    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js"-->
+    <!--    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"-->
+    <!--    class="astro-vvvwv3sm"></script>-->
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4" th:fragment="menu(v_menu)">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/}">스프링부트</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"> <span
+                    class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <!-- <li class="nav-item"> <a class="nav-link active" aria-current="page" href="#">홈</a> </li> -->
+                    <li class="nav-item">
+                        <!--                    현재 메뉴에 강조 스타일 적용 (Bootstrap에서 active는 강조됨)-->
+                        <!--                    <a class="nav-link" th:classappend="${v_menu}=='home'? 'active'" href="#">홈</a>-->
+                        <a class="nav-link" th:classappend="${v_menu}=='home'? 'active'" th:href="@{/}">홈</a>
+
+                        <!-- th:fragment="menu" -> "${v_menu} -->
+                    </li>
+                    <li class="nav-item">
+                        <!--                    <a class="nav-link" th:classappend="${v_menu}=='board'? 'active'" href="#">게시판</a>-->
+                        <a class="nav-link" th:classappend="${v_menu}=='board'? 'active'"
+                            th:href="@{/board/list}">게시판</a>
+                    </li>
+
+                </ul>
+
+
+                <!-- <a class="btn btn-outline-success  type="submit" th:href="@{/account/login}">Login</a> -->
+                <!-- sec:authorize="!isAuthenticated()" : 인증된 사용자아니면 로그인 -->
+                <a class="btn btn-outline-success" th:href="@{/account/login}"
+                    sec:authorize="!isAuthenticated()">로그인</a>
+                <a class="btn btn-outline-success" th:href="@{/account/register}"
+                    sec:authorize="!isAuthenticated()">회원가입</a>
+                <form class="d-flex" role="search" method="post" th:action="@{/logout}"
+                    sec:authorize="isAuthenticated()">
+                    <!-- <span class="text-white mx-2" sec:authentication="name">사용자</span> -->
+                    <!-- <span class="text-white mx-2" sec:authentication="principal.authorities">권한</span> -->
+                    <!-- OAuth2User 로그인 (attributes가 있는 경우) -->
+                    <span class="text-white mx-2"
+                        th:if="${#authentication.principal instanceof T(org.springframework.security.oauth2.core.user.OAuth2User)}"
+                        th:text="${#authentication.principal.attributes['name']} + ' 님'">이름</span>
+                    <span class="text-white mx-2"
+                        th:if="${#authentication.principal instanceof T(org.springframework.security.oauth2.core.user.OAuth2User)}"
+                        th:text="${#authentication.principal.attributes['email']}">이메일</span>
+
+                    <!-- 로컬 로그인 (UserDetails 타입) -->
+                    <span class="text-white mx-2"
+                        th:if="${#authentication.principal instanceof T(org.springframework.security.core.userdetails.User)}"
+                        th:text="${#authentication.name} + ' 님'">이름</span>
+                    <a class="btn btn-outline-success" th:href="@{/account/search}"
+                        sec:authorize="hasRole('ROLE_ADMIN')">사용자정보</a>
+                    <a class="btn btn-outline-info" th:href="@{/admin/logout-logs/chart}"
+                        sec:authorize="hasRole('ROLE_ADMIN')">로그아웃 통계</a>
+
+                    <button class="btn btn-outline-success" type="submit">로그아웃</button>
+
+                </form>
+
+
+            </div>
+        </div>
+    </nav>
+
+
+
+</body>
+
+</html>

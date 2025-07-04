@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>로그아웃 통계</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        button {
+            margin: 10px;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h2>로그아웃 건수 통계</h2>
+
+<!-- 토글 버튼 -->
+<div>
+    <button onclick="loadChart('daily')">일별 보기</button>
+    <button onclick="loadChart('hourly')">시간별 보기</button>
+</div>
+
+<canvas id="logoutChart" width="800" height="400"></canvas>
+
+<script>
+    let logoutChart = null;
+
+    function loadChart(type) {
+        const apiUrl = type === 'daily'
+            ? '/api/logout/daily-count'
+            : '/api/logout/hourly-count';
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                const labels = data.map(item => item.logoutDate);
+                const counts = data.map(item => item.logoutCount);
+                const labelName = type === 'daily' ? '일별 로그아웃 건수' : '시간별 로그아웃 건수';
+
+                drawChart(labels, counts, labelName);
+            })
+            .catch(error => {
+                console.error('로그아웃 데이터 로드 실패:', error);
+            });
+    }
+
+    function drawChart(labels, data, labelText) {
+        const ctx = document.getElementById('logoutChart').getContext('2d');
+
+        if (logoutChart) {
+            logoutChart.destroy(); // 기존 차트 제거
+        }
+
+        logoutChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: labelText,
+                    data: data,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    fill: true,
+                    tension: 0.3
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: '날짜 / 시간'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: '로그아웃 건수'
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // 페이지 로드 시 기본 일별 차트 로드
+    loadChart('daily');
+</script>
+
+</body>
+</html>

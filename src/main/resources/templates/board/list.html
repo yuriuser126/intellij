@@ -1,0 +1,94 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{'fragment/common' :: head}">
+    <!--<head th:replace="~{fragment/common :: head}">-->
+</head>
+
+<body>
+    <!-- board 안에서의 메뉴로 쓸거 -> board -->
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4" th:replace="~{'fragment/common' :: menu('board')}">
+    </nav>
+
+    <main class="container">
+    <!-- <div>총건수:<span th:text="${board.size()}"></span>개</div> -->
+    <!-- getTotalElement -> getT->t로 바꿔야함 다른거도 마찬가지  -->
+    <div>총건수:<span th:text="${boards.totalElements}"></span>개</div>
+
+    <!-- alt+shift+f -->
+   <!-- 검색 -->
+        <div class="d-flex justify-content-end">
+            <form class="row g-3" th:action="@{/board/list}" method="get" >
+
+                <div class="col-auto">
+                    <label for="searchText" class="visually-hidden">검색</label>
+                    <input type="text" class="form-control" id="searchText" name="searchText" th:value="${param.searchText}"  >
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-secondary"  >검색</button>
+
+                </div>
+            </form>
+
+        </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">번호</th>
+                <th scope="col">제목</th>
+                <th scope="col">작성자</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="board : ${boards}">
+                <!-- 마리아디비 데이터 -->
+                <td th:text="${board.id}">Mark</td>
+                <td>
+                    <a th:text="${board.title}" th:href="@{/board/form(id=${board.id})}">글제목</a>
+                </td>
+                <td th:text="${board.user.username}">홍길동</td>
+                <!-- <td th:text="${board.content}">홍길동</td> -->
+                <!-- <td th:text="${board.title}">Otto</td> -->
+            </tr>
+
+        </tbody>
+    </table>
+
+    <p class="text-end">
+        <a class="btn btn-primary" th:href="@{form}">쓰기</a>
+        <!-- <a class="btn btn-primary" th:href="@{form}">쓰기</a> -->
+        <!--        <button type="button" class="btn btn-primary" th:href="@{board/form}" >쓰기</button>-->
+    </p>
+
+    <nav aria-label="Page navigation example">
+
+        <ul class="pagination justify-content-center">
+            <!--            <li class="page-item">-->
+            <!--                1페이지만 이전 못하게끔-->
+            <li class="page-item" th:classappend="${ 1 == boards.pageable.pageNumber + 1} ? 'disabled'">
+                <!--                <a class="page-link" href="#">Previous</a>-->
+                <a class="page-link" th:href="@{/board/list(page=${boards.pageable.pageNumber-1})}">Previous</a>
+            </li>
+            <!--            <li class="page-item"><a class="page-link" href="#">1</a></li>-->
+            <!--            <li class="page-item " th:each="i: ${#numbers.sequence(startPage,endPage)}" >-->
+            <li class="page-item " th:classappend="${i == boards.pageable.pageNumber + 1} ? 'disabled'"
+                th:each="i: ${#numbers.sequence(startPage,endPage)}">
+                <!--                <a class="page-link" href="board/list?page=startPage" th:text="${i}" >1</a>-->
+                <a class="page-link" th:href="@{/board/list(page=${i-1})}" th:text="${i}">1</a>
+            </li>
+            <li class="page-item" th:classappend="${boards.totalPages == boards.pageable.pageNumber + 1 } ? 'disabled'">
+                <a class="page-link " th:href="@{/board/list(page=${boards.pageable.pageNumber+1})}">Next</a>
+            </li>
+        </ul>
+    </nav>
+
+    </main>
+   
+
+
+
+</body>
+
+</html>

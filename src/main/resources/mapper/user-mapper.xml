@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.boot.board_250618.dao.UserDAO">
+    <select id="findById" resultType="com.boot.board_250618.dto.UserRole" parameterType="long">
+<!--userrole에서 만든거로 이 쿼리 적용할것임 리절트타입설명 / pk long타입 지정.-->
+        SELECT u.id
+                , u.username
+                , u.enabled
+                , ur.role_id
+                , r.name
+        FROM user u
+        JOIN user_role ur
+         ON u.id = ur.user_id
+        JOIN role r
+         ON ur.role_id = r.id
+        <if test="id != 0">
+         WHERE u.id = #{id}
+        </if>
+        ORDER BY u.id
+
+<!--        SELECT * FROM user WHERE id = #{id}- pk long타입 지정-->
+<!--        WHERE u.id = 1 이걸 줄수도있고 안줄수도있고 if 사용-->
+    </select>
+</mapper>
+
+
+
+
+
+
+<!--<mapper namespace="com.boot.dao.BoardDAO">-->
+
+<!--<select id="list" resultType="com.boot.dto.BoardDTO">-->
+<!--    select boardNo, boardName, boardTitle, boardContent, boardDate, boardHit from tb1_board-->
+<!--</select>-->
+
+
+<!--</mapper>-->
+
+
+

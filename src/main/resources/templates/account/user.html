@@ -1,0 +1,72 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{'fragment/common' :: head}">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4" th:replace="~{'fragment/common' :: menu('board')}">
+    </nav>
+     <main class="container">
+    <h2>사용자 정보</h2>
+
+        <div class="d-flex justify-content-end">
+            사용자 아이디 : 
+            <form class="row g-3" th:action="@{/account/search}" >
+                <div class="col-auto">
+                    <label for="id" class="visually-hidden">검색</label>
+                    <input type="text" class="form-control" id="id" name="id" th:value="${param.id}" >
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-secondary" >검색</button>
+                </div>
+            </form>
+
+        </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">사용자 아이디</th>
+                <th scope="col">사용자 명</th>
+                <th scope="col">재직여부</th>
+                <th scope="col">권한여부</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- users를  user로 받음 -->
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}">Mark</td>
+                <td th:text="${user.username}">Mark</td>
+                <!-- <td th:text="${user.enabled}">Mark</td> -->
+                <!-- <td th:text="${user.enabled}"> -->
+                <td>
+                    <select name="enabled">
+                        <option th:selected="${user.enabled == true}">재직중</option>
+                        <option th:selected="${user.enabled == false}">퇴사</option>
+                        <!-- <option th:selected="${user.enabled == error}">미망인</option> -->
+                    </select>
+                </td>
+                <!-- <td th:text="${user.name}">Mark</td> -->
+                <td >
+                    <select name="name">
+                        <option th:selected="${user.name == 'ROLE_USER'}">일반인</option>
+                        <option th:selected="${user.name == 'ROLE_ADMIN'}">관리자</option>
+                    </select>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+</div>
+</main>
+
+
+
+</body>
+
+</html>
+
