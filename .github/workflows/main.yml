@@ -17,4 +17,4 @@ jobs:
         uses: cloudtype-github-actions/deploy@v1
         with:
           token: ${{ secrets.CLOUDTYPE_API_TOKEN }}
-          project: 사용자아이디/프로젝트이름
+          project: yuriuser126/intellij
