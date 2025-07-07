@@ -1,6 +1,10 @@
 name: intellij
 app: java@17
 
+git:
+  url: https://github.com/yuriuser126/intellij.git
+  branch: main
+
 build:
   buildsystem: gradle
   buildcommand: ./gradlew build
