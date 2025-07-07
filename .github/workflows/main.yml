@@ -18,3 +18,4 @@ jobs:
         with:
           token: ${{ secrets.CLOUDTYPE_API_TOKEN }}
           project: yuriuser126/intellij
+          file: ./cloudtype.yaml
