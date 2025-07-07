@@ -17,5 +17,5 @@ jobs:
         uses: cloudtype-github-actions/deploy@v1
         with:
           token: ${{ secrets.CLOUDTYPE_API_TOKEN }}
-          project: yuriuser126/intellij
+          project: syuri5458/intellij       
           file: ./cloudtype.yaml
