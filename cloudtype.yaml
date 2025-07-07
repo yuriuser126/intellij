@@ -1,0 +1,13 @@
+name: intellij
+app: java@17
+
+build:
+  buildsystem: gradle
+  buildcommand: ./gradlew build
+
+run:
+  jarfile: build/libs/*.jar
+  port: 8989
+  env:
+    - name: SPRING_PROFILES_ACTIVE
+      value: prod
