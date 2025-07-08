@@ -1,13 +1,10 @@
 name: intellij
-app: java@17
-
+app: docker
 
 build:
-  buildsystem: gradle
-  buildcommand: ./gradlew build
+  dockerfile: Dockerfile
 
 run:
-  jarfile: build/libs/*.jar
   port: 8989
   env:
     - name: SPRING_PROFILES_ACTIVE
