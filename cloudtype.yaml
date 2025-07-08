@@ -1,5 +1,5 @@
 name: intellij
-app: docker
+app: intellij
 
 build:
   dockerfile: Dockerfile
